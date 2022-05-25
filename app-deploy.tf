@@ -8,7 +8,7 @@ resource "null_resource" "app-deploy" {
     }
     inline = [
     #  "ansible-pull -U https://github.com/raghudevopsb63/ansible roboshop.yml  -e role_name=${var.COMPONENT} -e HOST=localhost -e APP_VERSION=${var.APP_VERSION} -e ENV=${var.ENV} -e MONGODB_ENDPOINT=${data.terraform_remote_state.db.outputs.MONGODB_ENDPOINT}"
-      ansible-pull -U https://github.com/ashwinreddy9966/ansible roboshop-pull.yml -e ENV=dev -e APP_VERSION=${var.APP_VERSION} -e COMPONENT=${var.COMPONENT}
+      ansible-pull -U https://github.com/ashwinreddy9966/ansible roboshop-pull.yml -e ENV=${var.ENV} -e APP_VERSION=${var.APP_VERSION} -e COMPONENT=${var.COMPONENT}
     ]
   }
 }
