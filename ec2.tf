@@ -8,3 +8,4 @@ resource "aws_spot_instance_request" "spot" {
     Name = "${var.COMPONENT}-${var.ENV}"
   }
 }
+
