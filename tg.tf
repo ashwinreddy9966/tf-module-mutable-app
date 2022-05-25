@@ -13,7 +13,7 @@ resource "aws_lb_target_group_attachment" "instance-attachment" {
 }
 
 resource "aws_lb_listener_rule" "app_rule" {
-  listener_arn = aws_lb_listener.
+  listener_arn = data.terraform_remote_state.alb.outputs.LISTENER_ARN
   priority     = 100
 
   action {
@@ -22,14 +22,8 @@ resource "aws_lb_listener_rule" "app_rule" {
   }
 
   condition {
-    path_pattern {
-      values = ["/static/*"]
-    }
-  }
-
-  condition {
     host_header {
-      values = ["example.com"]
+      values = [""]
     }
   }
 }
