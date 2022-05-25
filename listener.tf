@@ -1,5 +1,5 @@
 resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = var.INTERNAL 
+  load_balancer_arn = var.INTERNAL
   port              = "80"
   protocol          = "HTTP"
 
