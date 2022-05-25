@@ -25,7 +25,7 @@ resource "aws_instance" "OD" {
 
 resource "aws_ec2_tag" "example" {
   count       = var.SPOT_INSTANCE_COUNT + var.OD_INSTANCE_COUNT
-  resource_id = concat(aws_instance.OD.*.id  aws_spot_instance_request.spod.*.id
+  resource_id = concat([aws_instance.OD.*.id],[aws_spot_instance_request.spot.*.id]
   key         = "Name"
   value       = "Hello World"
 }
