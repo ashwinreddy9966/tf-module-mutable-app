@@ -15,3 +15,9 @@ data "terraform_remote_state" "alb" {
     region = "us-east-1"
   }
 }
+
+data "aws_ami" "ami" {
+  most_recent      = true
+  name_regex       = "^myami-\\d{3}"
+  owners           = ["self"]
+}
