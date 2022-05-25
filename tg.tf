@@ -37,14 +37,12 @@ resource "random_integer" "lb-rule-priority" {
 
 resource "aws_lb_listener" "public_lb_listener" {
   count             = var.LB_TYPE == "public" ? 1 : 0
-  load_balancer_arn = data.terraform_remote_state.alb.outputs
-  port              = "443"
-  protocol          = "TLS"
-  certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
-  alpn_policy       = "HTTP2Preferred"
+  load_balancer_arn = data.terraform_remote_state.alb.outputs.PUBLIC_ALB_ARN
+  port              = "80"
+  protocol          = "http"
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.front_end.arn
+    target_group_arn = aws_lb_target_group.app.
   }
 }
