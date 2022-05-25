@@ -39,7 +39,7 @@ resource "aws_lb_listener" "public_lb_listener" {
   count             = var.LB_TYPE == "public" ? 1 : 0
   load_balancer_arn = data.terraform_remote_state.alb.outputs.PUBLIC_ALB_ARN
   port              = "80"
-  protocol          = "http"
+  protocol          = "HTTP"
 
   default_action {
     type             = "forward"
