@@ -1,11 +1,11 @@
 resource "aws_security_group" "allows_app" {
-  name        = "roboshop-"
-  description = "Allow TLS inbound traffic"
+  name        = "roboshop-${var.COMPONENT}-${var.ENV}"
+  description = "roboshop-${var.COMPONENT}-${var.ENV}"
 
   ingress {
-    description = "Allows all"
-    from_port   = 0
-    to_port     = 0
+    description = "APP PORT"
+    from_port   = var.APP_PORT
+    to_port     = var.APP_PORT
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
