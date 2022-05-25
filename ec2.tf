@@ -23,13 +23,13 @@ resource "aws_instance" "OD" {
   }
 }
 
-local {
+locals {
   ALL_INSTANCE_IDS = concat([aws_instance.OD.*.id],[aws_spot_instance_request.spot.*.id]
 }
 
 resource "aws_ec2_tag" "example" {
   count       = var.SPOT_INSTANCE_COUNT + var.OD_INSTANCE_COUNT
-  resource_id = local.ALL_INSTANCE_IDS
+  resource_id = element(local.ALL_INSTANCE_IDS, count.index )
   key         = "Name"
   value       = "Hello World"
 }
