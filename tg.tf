@@ -3,6 +3,11 @@ resource "aws_lb_target_group" "app" {
   port     = 8080
   protocol = "HTTP"
   vpc_id   =data.terraform_remote_state.vpc.outputs.VPC_ID
+
+  health_check {
+    
+  }
+
 }
 
 resource "aws_lb_target_group_attachment" "instance-attachment" {
