@@ -22,3 +22,8 @@ resource "aws_instance" "OD" {
     Name = "${var.COMPONENT}-${var.ENV}"
   }
 }
+resource "aws_ec2_tag" "example" {
+  resource_id = aws_vpn_connection.example.transit_gateway_attachment_id
+  key         = "Name"
+  value       = "Hello World"
+}
