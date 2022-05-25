@@ -1,5 +1,6 @@
 resource "aws_route53_record" "record" {
-  zone_id = data.terraform_remote_state.vpc.outputs.HOSTEDZONE_PRIVATE_ID
+  zone_id = var.LB_TYPE == "internal" ? data.terraform_remote_state.vpc.outputs.HOSTEDZONE_PRIVATE_ID : data.terraform_remote_state.vpc.outputs.HOSTEDZONE_PUBLIC_ID
+  name    = "${var.COMPONENT}-${var.ENV}.${data.terraform_remote_state.vpc.outputs.HOSTEDZONE_PRIVATE_ZONE}"
   name    = "${var.COMPONENT}-${var.ENV}.${data.terraform_remote_state.vpc.outputs.HOSTEDZONE_PRIVATE_ZONE}"
   type    = "CNAME"
   ttl     = "60"
