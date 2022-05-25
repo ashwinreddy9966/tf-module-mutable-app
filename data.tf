@@ -18,6 +18,6 @@ data "terraform_remote_state" "alb" {
 
 data "aws_ami" "ami" {
   most_recent      = true
-  name_regex       = "^myami-\\d{3}"
+  name_regex       = "rotot-with-ansible-ami"
   owners           = ["self"]
 }
