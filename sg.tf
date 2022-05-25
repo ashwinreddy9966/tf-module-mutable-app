@@ -6,8 +6,16 @@ resource "aws_security_group" "allows_app" {
     description = "APP PORT"
     from_port   = var.APP_PORT
     to_port     = var.APP_PORT
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    protocol    = "tcp"
+    cidr_blocks = [data.terraform_remote_state.vpc.outputs.VPC_CIDR]
+  }
+
+  ingress {
+    description = "APP PORT"
+    from_port   = var.APP_PORT
+    to_port     = var.APP_PORT
+    protocol    = "tcp"
+    cidr_blocks = [data.terraform_remote_state.vpc.outputs.VPC_CIDR]
   }
 
   egress {
