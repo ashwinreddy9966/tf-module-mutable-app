@@ -24,6 +24,7 @@ resource "aws_instance" "OD" {
 }
 
 resource "aws_ec2_tag" "example" {
+  count       = 
   resource_id =  ???????
   key         = "Name"
   value       = "Hello World"
