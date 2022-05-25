@@ -11,11 +11,11 @@ resource "aws_security_group" "allows_app" {
   }
 
   ingress {
-    description = "APP PORT"
-    from_port   = var.APP_PORT
-    to_port     = var.APP_PORT
+    description = "SSH"
+    from_port   = "22"
+    to_port     = "22"
     protocol    = "tcp"
-    cidr_blocks = [data.terraform_remote_state.vpc.outputs.VPC_CIDR]
+    cidr_blocks = [data.terraform_remote_state.vpc.outputs.WO]
   }
 
   egress {
