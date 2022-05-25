@@ -24,7 +24,7 @@ resource "aws_instance" "OD" {
 }
 
 locals {
-  ALL_INSTANCE_IDS = concat([aws_instance.OD.*.id],[aws_spot_instance_request.spot.*.id]
+  ALL_INSTANCE_IDS = concat([aws_instance.OD.*.id],[aws_spot_instance_request.spot.*.id])
 }
 
 resource "aws_ec2_tag" "example" {
