@@ -27,6 +27,6 @@ resource "aws_security_group" "allows_app" {
   }
 
   tags = {
-    Name =  "allow-${var.COMPONENT}"
+    Name =  "roboshop-${var.COMPONENT}-${var.ENV}"
   }
 }
