@@ -12,8 +12,8 @@ resource "aws_lb_target_group_attachment" "instance-attachment" {
   port             = 8080
 }
 
-resource "aws_lb_listener_rule" "static" {
-  listener_arn = aws_lb_listener.front_end.arn
+resource "aws_lb_listener_rule" "app_rule" {
+  listener_arn = aws_lb_listener.
   priority     = 100
 
   action {
