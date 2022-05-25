@@ -17,7 +17,6 @@ resource "aws_instance" "OD" {
   ami                     = data.aws_ami.ami
   instance_type           = var.INSTANCE_TYPE
   vpc_security_group_ids  = [aws_security_group.allows_app.id]
-  vpc_security_group_ids  = [aws_security_group.allows_app.id]
   subnet_id               = element(data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS, count.index)
   tags = {
     Name = "${var.COMPONENT}-${var.ENV}"
