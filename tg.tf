@@ -23,7 +23,7 @@ resource "aws_lb_listener_rule" "app_rule" {
 
   condition {
     host_header {
-      values = [${var.}]
+      values = [${var.COMPONENT}]
     }
   }
 }
