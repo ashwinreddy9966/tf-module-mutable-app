@@ -10,11 +10,12 @@ resource "aws_spot_instance_request" "spot" {
 }
 
 
-resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
+resource "aws_instance" "OD" {
+  count                 = var.OD_INSTANCE_COUNT
+  ami                   = data.aws_ami.ami
+  instance_type         = var.INSTANCE_TYPE
 
   tags = {
-    Name = "HelloWorld"
+    Name = "${var.COMPONENT}-${var.ENV}"
   }
 }
