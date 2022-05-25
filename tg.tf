@@ -36,8 +36,8 @@ resource "random_integer" "lb-rule-priority" {
 
 
 resource "aws_lb_listener" "public_lb_listener" {
-  count             = var.LB_TYPE =
-  load_balancer_arn = aws_lb.front_end.arn
+  count             = var.LB_TYPE == "public" ? 1 : 0
+  load_balancer_arn = data.terraform_remote_state.alb.outputs
   port              = "443"
   protocol          = "TLS"
   certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
