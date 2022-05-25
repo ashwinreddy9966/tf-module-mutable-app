@@ -7,6 +7,6 @@ resource "aws_lb_target_group" "app" {
 
 resource "aws_lb_target_group_attachment" "instance-attachment" {
   target_group_arn = aws_lb_target_group.app.arn
-  target_id        =  ?????
+  target_id        = element(local.ALL_INSTANCE_IDS, count.index )
   port             = 8080
 }
