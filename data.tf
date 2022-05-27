@@ -16,6 +16,15 @@ data "terraform_remote_state" "alb" {
   }
 }
 
+data "terraform_remote_state" "alb" {
+  backend = "s3"
+  config = {
+    bucket = "robot-terraform-remote-state"
+    key    = "alb/${var.ENV}/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
 data "aws_ami" "ami" {
   most_recent      = true
   name_regex       = "rotot-with-ansible-ami"
