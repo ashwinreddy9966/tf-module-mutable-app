@@ -7,3 +7,4 @@ variable "WORKSTATION_IP" {}
 variable "APP_PORT" {}
 variable "APP_VERSION" {}
 variable "LB_TYPE" {}
+variable "APP_TYPE" {}
