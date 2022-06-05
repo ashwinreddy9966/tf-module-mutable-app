@@ -23,7 +23,7 @@ resource "aws_instance" "OD" {
   subnet_id               = element(data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS, count.index)
   tags = {
     Name               = "${var.COMPONENT}-${var.ENV}"
-    prometheus-monitor = yes
+    prometheus-monitor = "yes"
     ENV                = var.ENV
   }
 }
