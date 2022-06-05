@@ -10,7 +10,7 @@ resource "aws_spot_instance_request" "spot" {
 
   tags = {
     Name = "${var.COMPONENT}-${var.ENV}"
-    ENV
+    ENV  = var.ENV
   }
 }
 
@@ -26,9 +26,16 @@ resource "aws_instance" "OD" {
   }
 }
 
-resource "aws_ec2_tag" "example" {
+resource "aws_ec2_tag" "name-tag" {
   count       = var.SPOT_INSTANCE_COUNT + var.OD_INSTANCE_COUNT
   resource_id = element(local.ALL_INSTANCE_IDS, count.index )
   key         = "Name"
+  value       = "${var.COMPONENT}-${var.ENV}"
+}
+
+resource "aws_ec2_tag" "env-tag" {
+  count       = var.SPOT_INSTANCE_COUNT + var.OD_INSTANCE_COUNT
+  resource_id = element(local.ALL_INSTANCE_IDS, count.index )
+  key         = "ENV"
   value       = "${var.COMPONENT}-${var.ENV}"
 }
