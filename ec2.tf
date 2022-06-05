@@ -10,7 +10,6 @@ resource "aws_spot_instance_request" "spot" {
 
   tags = {
     Name = "${var.COMPONENT}-${var.ENV}"
-    ENV  = var.ENV
   }
 
 }
